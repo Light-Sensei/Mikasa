@@ -32,9 +32,9 @@ from MikasaRobot import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from ShuKurenaiXRoBot.modules import ALL_MODULES
-from ShuKurenaiXRoBot.modules.helper_funcs.chat_status import is_user_admin
-from ShuKurenaiXRoBot.modules.helper_funcs.misc import paginate_modules
+from MikasaRobot.modules import ALL_MODULES
+from MikasaRobot.modules.helper_funcs.chat_status import is_user_admin
+from MikasaRobot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -81,13 +81,10 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
+────「 Mikasa Ackerman 」────
 *Hello {} !*
-✪ I'm an Anime theme management bot [🔥](https://telegra.ph/file/8d7740525324d24df899a.jpg) 
-────────────────────────
-× *Uptime:* `{}`
-× `{}` *users, across* `{}` *chats.*
-────────────────────────
-✪ Click help to see my powers """
+I Am Mikasa an Anime themed bot here to slay every titans and save you from them 
+Hit /help to see the powers of my blade """
 
 
 
@@ -95,23 +92,23 @@ PM_START_TEXT = """
 buttons = [
     [
         InlineKeyboardButton(
-            text="➗ Add Shu Kurenai To Your Group ➗", url="t.me/SatoruXRoBot?startgroup=new"),
+            text="ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ", url="t.me/MikasaXProBot?startgroup=new"),
     ],
     [
         InlineKeyboardButton(
-              text="Help",
+              text="ʜᴇʟᴘ",
               callback_data="help_back"),
         InlineKeyboardButton(
-              text="About",
+              text="ᴀʙᴏᴜᴛ ᴍᴇ",
               callback_data="shukurenai_"),   
     ],
     [                  
                        InlineKeyboardButton(
-                             text="Support🚑",
+                             text="sᴜᴘᴘᴏʀᴛ",
                              url=f"https://t.me/{SUPPORT_CHAT}"),
                        InlineKeyboardButton(
-                             text="Updates🛰️",
-                             url=f"https://t.me/SatoruXupdated"),
+                             text="ᴜᴘᴅᴀᴛᴇs",
+                             url=f"https://t.me/MikasaXupdates"),
     ],
 
 ]
@@ -120,10 +117,10 @@ buttons = [
 HELP_STRINGS = """
 Click on the button bellow to get description about specifics command[.](http://telegra.ph/file/e384ab52db8c0912ca356.jpg)"""
 
-HELP_MSG = "Click the button below to get help manu in your pm."
-DONATE_STRING = """Contact to **@shukurenai007bot**"""
-HELP_IMG = "https://telegra.ph/file/89c9ff4e74ca203611da2.jpg"
-GROUP_IMG = "https://telegra.ph/file/89c9ff4e74ca203611da2.jpg"
+HELP_MSG = "Click the button bellow for help ."
+DONATE_STRING = """Contact to **@Itz_Light_yagami**"""
+HELP_IMG = "https://telegra.ph/file/d87e107db2f0c1436fa57.jpg"
+GROUP_IMG = "https://telegra.ph/file/8e67fc63f44c03a91dd76.jpg"
 
 
 
@@ -138,7 +135,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("ShuKurenaiXRoBot.modules." + module_name)
+    imported_module = importlib.import_module("MIkasaRobot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -247,8 +244,8 @@ def start(update: Update, context: CallbackContext):
         reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                  InlineKeyboardButton(text="✧ Support ", url=f"https://telegram.dog/{SUPPORT_CHAT}"),
-                  InlineKeyboardButton(text="✧ Updates ", url=f"t.me/satoruXupdates"),
+                  InlineKeyboardButton(text="✧ sᴜᴘᴘᴏʀᴛ ", url=f"https://telegram.dog/{SUPPORT_CHAT}"),
+                  InlineKeyboardButton(text="✧ ᴜᴘᴅᴀᴛᴇs ", url=f"t.me/MikasaXupdates"),
                   ]
                 ]
             ),
@@ -381,33 +378,33 @@ def shukurenai_about_callback(update, context):
     query = update.callback_query
     if query.data == "shukurenai_":
         query.message.edit_text(
-            text="๏ I'm *Satoru Gojo*, a powerful group management bot built to help you manage your group easily."
-            "\n• I can restrict users."
-            "\n• I can greet users with customizable welcome messages and even set a group's rules."
-            "\n• I have an advanced anti-flood system."
-            "\n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
-            "\n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
-            "\n• I check for admins' permissions before executing any command and more stuffs"
-            "\n\n_Satoru Gojo's licensed under the GNU General Public License v3.0_"
-            "\n\n Click on button bellow to get basic help for SatoruXRoBot.",
+            text="๏ I'm *Mikasa*, a powerful group management bot built to help you manage your group easily."
+            "\n♡ I can restrict users."
+            "\n♡ I can greet users with customizable welcome messages and even set a group's rules."
+            "\n♡ I have an advanced anti-flood system."
+            "\n♡ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
+            "\n♡ I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
+            "\n♡ I check for admins' permissions before executing any command and more stuffs"
+            "\n\n_MIkasa's licensed under the GNU General Public License v3.0_"
+            "\n\n Click on button bellow to get basic help for MikasaXProBot.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Admins", callback_data="shukurenai_admin"),
-                    InlineKeyboardButton(text="Notes", callback_data="shukurenai_notes"),
+                    InlineKeyboardButton(text="ᴀᴅᴍɪɴs", callback_data="shukurenai_admin"),
+                    InlineKeyboardButton(text="ɴᴏᴛᴇs", callback_data="shukurenai_notes"),
                  ],
                  [
-                    InlineKeyboardButton(text="Support", callback_data="shukurenai_support"),
-                    InlineKeyboardButton(text="Credits", callback_data="shukurenai_credit"),
+                    InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", callback_data="shukurenai_support"),
+                    InlineKeyboardButton(text="ᴄʀᴇᴅɪᴛs", callback_data="shukurenai_credit"),
                  ],
                  [
-                    InlineKeyboardButton(text="My Mistress", url="https://t.me/yor_froger0_0"),
-                    InlineKeyboardButton(text="Chat Group", url="https://t.me/anime_friemds"), 
+                    InlineKeyboardButton(text="ᴍʏ ᴇʀᴇɴ", url="https://t.me/yor_froger0_0"),
+                    InlineKeyboardButton(text="ᴄʜᴀᴛ ɢʀᴏᴜᴘ", url="https://t.me/anime_friemds"), 
                  ],
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="shukurenai_back"),
+                    InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="shukurenai_back"),
                  ]
                 ]
             ),
@@ -430,7 +427,7 @@ def shukurenai_about_callback(update, context):
     elif query.data == "shukurenai_admin":
         query.message.edit_text(
             text=f"*๏ Let's make your group bit effective now*"
-            "\nCongragulation, Shu Kurenai now ready to manage your group."
+            "\nHoii, am is now ready to manage your group, let me bring my blades."
             "\n\n*Admin Tools*"
             "\nBasic Admin tools help you to protect and powerup your group."
             "\nYou can ban members, Kick members, Promote someone as admin through commands of bot."
@@ -463,11 +460,11 @@ def shukurenai_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Support", url="t.me/SatoruXspport"),
-                    InlineKeyboardButton(text="Updates", url="https://t.me/satoruXupdates"),
+                    InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="t.me/MikasaXspport"),
+                    InlineKeyboardButton(text="ᴜᴘᴅᴀᴛᴇs", url="https://t.me/MikasaXupdates"),
                  ],
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="shukurenai_"),
+                    InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="shukurenai_"),
                  
                  ]
                 ]
@@ -477,13 +474,13 @@ def shukurenai_about_callback(update, context):
 
     elif query.data == "shukurenai_credit":
         query.message.edit_text(
-            text=f"๏ Credis for Satoru Gojo\n"
+            text=f"๏ Credis for Mikasa\n"
             "\nHere Developers Making And Give Inspiration For Made The SatoruXRoBot",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Light Yagami", url="https://github.com/Light-Sensei"),
+                    InlineKeyboardButton(text="Light Yagami", url="https://t.me/Itz_Light_yagami"),
             
 
                  ],
@@ -547,7 +544,7 @@ def get_help(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Help",
+                                text="ʜᴇʟᴘ",
                                 url="t.me/{}?start=ghelp_{}".format(
                                     context.bot.username, module
                                 ),
@@ -563,7 +560,7 @@ def get_help(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Help",
+                            text="ʜᴇʟᴘ",
                             url="t.me/{}?start=help".format(context.bot.username),
                         )
                     ]
@@ -584,7 +581,7 @@ def get_help(update: Update, context: CallbackContext):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help_back")]]
             ),
         )
 
@@ -656,7 +653,7 @@ def settings_button(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Go Back",
+                                text="ʙᴀᴄᴋ",
                                 callback_data="stngs_back({})".format(chat_id),
                             )
                         ]
@@ -731,7 +728,7 @@ def get_settings(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Settings",
+                                text="sᴇᴛᴛɪɴɢs",
                                 url="t.me/{}?start=stngs_{}".format(
                                     context.bot.username, chat.id
                                 ),
@@ -759,7 +756,7 @@ def donate(update: Update, context: CallbackContext):
         if OWNER_ID != 1606221784:
             update.effective_message.reply_text(
                 "I'm free for everyone 😎 If you wanna make me smile, just join"
-                "[My Channel]({})".format(DONATION_LINK),
+                "[My Channel](https://t.me/Night_Raiderss)".format(DONATION_LINK),
                 parse_mode=ParseMode.MARKDOWN,
             )
     else:
@@ -808,11 +805,11 @@ def main():
                 [
                   [                  
                        InlineKeyboardButton(
-                             text="Support🚑",
-                             url=f"https://t.me/SatoruXSupport"),
+                             text="sᴜᴘᴘᴏʀᴛ",
+                             url=f"https://t.me/MikasaXSupport"),
                        InlineKeyboardButton(
-                             text="Updates🛰️",
-                             url="https://t.me/satoruXupdates")
+                             text="ᴜᴘᴅᴀᴛᴇs",
+                             url="https://t.me/MikasaXupdates")
                      ] 
                 ]
             ),
