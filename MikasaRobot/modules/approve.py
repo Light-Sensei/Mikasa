@@ -1,12 +1,12 @@
 import html
-from SiestaRobot.modules.disable import DisableAbleCommandHandler
-from SiestaRobot import dispatcher, DRAGONS
-from SiestaRobot.modules.helper_funcs.extraction import extract_user
+from MikasaRobot.modules.disable import DisableAbleCommandHandler
+from MikasaRobot import dispatcher, DRAGONS
+from MikasaRobot.modules.helper_funcs.extraction import extract_user
 from telegram.ext import CallbackContext, CallbackQueryHandler
-import SiestaRobot.modules.sql.approve_sql as sql
-from SiestaRobot.modules.helper_funcs.chat_status import user_admin
-from SiestaRobot.modules.log_channel import loggable
-from SiestaRobot.modules.language import gs
+import MikasaRobot.modules.sql.approve_sql as sql
+from MikasaRobot.modules.helper_funcs.chat_status import user_admin
+from MikasaRobot.modules.log_channel import loggable
+from MikasaRobot.modules.language import gs
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
 from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
