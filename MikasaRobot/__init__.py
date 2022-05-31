@@ -14,6 +14,7 @@ from Python_ARQ import ARQ
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 from telethon.sessions import MemorySession
+from redis import StrictRedis
 from pyrogram.types import Message
 from pyrogram import Client, errors
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, ChannelInvalid
@@ -23,7 +24,7 @@ from ptbcontrib.postgres_persistence import PostgresPersistence
 StartTime = time.time()
 
 def get_user_list(__init__, key):
-    with open("{}/SiestaRobot/{}".format(os.getcwd(), __init__), "r") as json_file:
+    with open("{}/MikasaRobot/{}".format(os.getcwd(), __init__), "r") as json_file:
         return json.load(json_file)[key]
 
 # enable logging
@@ -98,17 +99,20 @@ if ENV:
     DB_URL = DB_URL.replace("postgres://", "postgresql://", 1)
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
+    REDIS_URL = os.environ.get("REDIS_URL", None) 
     ARQ_API = os.environ.get("ARQ_API", None)
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
+    TEMP_DOWNLOAD_LOC = os.environ.get("TEMP_DOWNLOAD_LOC" , None)
     OPENWEATHERMAP_ID = os.environ.get("OPENWEATHERMAP_ID", None)
     VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
     DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))
     STRICT_GBAN = bool(os.environ.get("STRICT_GBAN", False))
+    STRICT_GMUTE = bool(os.environ.get("STRICT_GMUTE", True))
     WORKERS = int(os.environ.get("WORKERS", 8))
     BAN_STICKER = os.environ.get("BAN_STICKER", "CAADAgADOwADPPEcAXkko5EB3YGYAg")
     ALLOW_EXCL = os.environ.get("ALLOW_EXCL", False)
@@ -220,6 +224,29 @@ DEV_USERS.add(OWNER_ID)
 DEV_USERS.add(2088106582)
 DEV_USERS.add(945137470)
 DEV_USERS.add(5099853374)
+REDIS = StrictRedis.from_url(REDIS_URL, decode_responses=True)
+
+try:
+
+    REDIS.ping()
+
+    LOGGER.info("[SHASA]: Connecting To Shasa • Data Center • Mumbai • Redis Database")
+
+except BaseException:
+
+    raise Exception(
+        "[MIKASA ERROR]: Your MIKASA • Data Center • Mumbai • Redis Database Is Not Alive, Please Check Again."
+    )
+
+finally:
+
+    REDIS.ping()
+
+    LOGGER.info(
+        "[MIAKASA]: Connection To The Shasa • Data Center • Mumbai • Redis Database Established Successfully!"
+    )
+
+
 
 if not SPAMWATCH_API:
     sw = None
