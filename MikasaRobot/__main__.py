@@ -82,7 +82,7 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 ────「 Mikasa Ackerman 」────
-*Hello {} !*
+*Kon'ichiwa {} !*
 I Am Mikasa an Anime themed bot here to slay every titans and save you from them 
 Hit /help to see the powers of my blade """
 
@@ -115,13 +115,12 @@ buttons = [
 
 
 HELP_STRINGS = """
-Click on the button bellow to get description about specifics command[.](http://telegra.ph/file/e384ab52db8c0912ca356.jpg)"""
+Click on the button bellow to get description about specifics command[.](https://telegra.ph/file/cb729c07864dd3d5c7be2.jpg)"""
 
 HELP_MSG = "Click the button bellow for help ."
 DONATE_STRING = """Contact to **@Itz_Light_yagami**"""
-HELP_IMG = "https://telegra.ph/file/d87e107db2f0c1436fa57.jpg"
-GROUP_IMG = "https://telegra.ph/file/8e67fc63f44c03a91dd76.jpg"
-
+HELP_IMG = "https://telegra.ph/file/6eb04680b8a2738bae9b8.jpg"
+GROUP_IMG = "https://telegra.ph/file/e11e93f3a3536140d54c7.jpg"
 
 
 IMPORTED = {}
@@ -481,6 +480,7 @@ def shukurenai_about_callback(update, context):
                 [
                  [
                     InlineKeyboardButton(text="Light Yagami", url="https://t.me/Itz_Light_yagami"),
+                    InlineKeyboardButton(text="Aaru", url="https://t.me/Pervert_sensei"), 
             
 
                  ],
@@ -756,7 +756,7 @@ def donate(update: Update, context: CallbackContext):
         if OWNER_ID != 1606221784:
             update.effective_message.reply_text(
                 "I'm free for everyone 😎 If you wanna make me smile, just join"
-                "[My Channel](https://t.me/Night_Raiderss)".format(DONATION_LINK),
+                "[My Channel](https://t.me/mhaprvt)".format(DONATION_LINK),
                 parse_mode=ParseMode.MARKDOWN,
             )
     else:
@@ -800,7 +800,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "[𝐈 𝐀𝐦 𝐎𝐧𝐥𝐢𝐧𝐞](https://telegra.ph/file/8d7740525324d24df899a.jpg)", parse_mode=ParseMode.MARKDOWN,
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "[Am back againg to slay the devil titans](https://telegra.ph/file/cb729c07864dd3d5c7be2.jpg)", parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                   [                  
