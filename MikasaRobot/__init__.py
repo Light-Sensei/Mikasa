@@ -12,7 +12,6 @@ from inspect import getfullargspec
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
 from telethon import TelegramClient
-from telethon.sessions import StringSession
 from telethon.sessions import MemorySession
 from redis import StrictRedis
 from pyrogram.types import Message
@@ -217,13 +216,7 @@ else:
 # If you forking dont remove this id, just add your id. LOL...
 
 DRAGONS.add(OWNER_ID)
-DRAGONS.add(2088106582)
-DRAGONS.add(945137470)
-DRAGONS.add(5099853374)
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(2088106582)
-DEV_USERS.add(945137470)
-DEV_USERS.add(5099853374)
 REDIS = StrictRedis.from_url(REDIS_URL, decode_responses=True)
 
 try:
@@ -235,7 +228,7 @@ try:
 except BaseException:
 
     raise Exception(
-        "[MIKASA ERROR]: Your MIKASA • Data Center • Mumbai • Redis Database Is Not Alive, Please Check Again."
+        "[NAMI ERROR]: Your NAMI • Data Center • Mumbai • Redis Database Is Not Alive, Please Check Again."
     )
 
 finally:
@@ -243,7 +236,7 @@ finally:
     REDIS.ping()
 
     LOGGER.info(
-        "[MIAKASA]: Connection To The Shasa • Data Center • Mumbai • Redis Database Established Successfully!"
+        "[NAMI]: Connection To The Shasa • Data Center • Mumbai • Redis Database Established Successfully!"
     )
 
 
@@ -270,12 +263,6 @@ aiohttpsession = ClientSession()
 print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-ubot2 = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
-try:
-    ubot2.start()
-except BaseException:
-    print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
-    sys.exit(1)
 
 pbot = Client(
     ":memory:",
@@ -328,7 +315,7 @@ DEMONS = list(DEMONS)
 TIGERS = list(TIGERS)
 
 # Load at end to ensure all prev variables have been set
-from SiestaRobot.modules.helper_funcs.handlers import (
+from MikasaRobot.modules.helper_funcs.handlers import (
     CustomCommandHandler,
     CustomMessageHandler,
     CustomRegexHandler,
